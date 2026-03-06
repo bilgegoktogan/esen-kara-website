@@ -9,6 +9,7 @@ export default defineConfig({
   title: "Esen Kara Website",
   projectId: "8kbn0q47",
   dataset: "production",
+  basePath: "/studio",
   plugins: [structureTool({ structure }), visionTool({ defaultApiVersion: "2024-01-01" })],
   schema: {
     types: schemaTypes,
