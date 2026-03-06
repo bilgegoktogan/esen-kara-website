@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, BookOpen, MapPin, Calendar } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
-import { blogPosts } from "@/lib/data";
+import { useBlogPosts } from "@/lib/sanity/useSanityData";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -47,6 +47,7 @@ const categoryLabels: Record<string, { en: string; tr: string }> = {
 
 export default function BlogPage() {
   const { lang, t } = useLanguage();
+  const blogPosts = useBlogPosts();
   const [activeCategory, setActiveCategory] = useState<Category>("all");
 
   const filteredPosts =

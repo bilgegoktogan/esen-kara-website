@@ -14,7 +14,7 @@ import {
   Link2,
 } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
-import { blogPosts } from "@/lib/data";
+import { useBlogPost } from "@/lib/sanity/useSanityData";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -41,8 +41,7 @@ export default function BlogPostPage() {
   const params = useParams();
   const { lang, t } = useLanguage();
   const slug = params.slug as string;
-
-  const post = blogPosts.find((p) => p.slug === slug);
+  const post = useBlogPost(slug);
 
   if (!post) {
     return (

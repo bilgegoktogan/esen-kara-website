@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, BookOpen, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
-import { siteConfig, researchAreas, publications, blogPosts } from "@/lib/data";
+import { useSiteSettings, useResearchAreas, usePublications, useBlogPosts } from "@/lib/sanity/useSanityData";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -23,6 +23,10 @@ const stagger = {
 
 export default function Home() {
   const { lang, t } = useLanguage();
+  const siteConfig = useSiteSettings();
+  const researchAreas = useResearchAreas();
+  const publications = usePublications();
+  const blogPosts = useBlogPosts();
 
   const latestPublications = publications.slice(0, 3);
   const latestBlogPosts = blogPosts.slice(0, 3);

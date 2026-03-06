@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Send, ExternalLink, Instagram, GraduationCap, BookOpen, Globe } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
-import { siteConfig } from "@/lib/data";
+import { useSiteSettings } from "@/lib/sanity/useSanityData";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -18,6 +18,7 @@ const staggerContainer = {
 
 export default function ContactPage() {
   const { t } = useLanguage();
+  const siteConfig = useSiteSettings();
   const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 

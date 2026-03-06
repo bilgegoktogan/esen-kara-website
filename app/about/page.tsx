@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/lib/language-context";
-import { siteConfig, education } from "@/lib/data";
+import { useSiteSettings, useEducation } from "@/lib/sanity/useSanityData";
 import { motion } from "framer-motion";
 import { GraduationCap, MapPin, Briefcase } from "lucide-react";
 
@@ -20,6 +20,8 @@ const staggerContainer = {
 
 export default function AboutPage() {
   const { lang, t } = useLanguage();
+  const siteConfig = useSiteSettings();
+  const education = useEducation();
 
   const positions = [
     {

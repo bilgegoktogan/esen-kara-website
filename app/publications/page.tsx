@@ -1,7 +1,8 @@
 "use client";
 
 import { useLanguage } from "@/lib/language-context";
-import { publications, siteConfig, type Publication } from "@/lib/data";
+import { usePublications, useSiteSettings } from "@/lib/sanity/useSanityData";
+import type { Publication } from "@/lib/data";
 import { motion } from "framer-motion";
 import { Filter, ExternalLink, ChevronDown, ChevronUp, BookOpen } from "lucide-react";
 import { useState } from "react";
@@ -23,6 +24,8 @@ type TypeFilter = "all" | "article" | "book";
 
 export default function PublicationsPage() {
   const { lang, t } = useLanguage();
+  const publications = usePublications();
+  const siteConfig = useSiteSettings();
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("all");
   const [fieldFilter, setFieldFilter] = useState<string>("all");
   const [expandedAbstracts, setExpandedAbstracts] = useState<Set<string>>(new Set());

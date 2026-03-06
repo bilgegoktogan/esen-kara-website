@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/lib/language-context";
-import { researchAreas, publications } from "@/lib/data";
+import { useResearchAreas, usePublications } from "@/lib/sanity/useSanityData";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
@@ -20,6 +20,8 @@ const staggerContainer = {
 
 export default function ResearchPage() {
   const { lang, t } = useLanguage();
+  const researchAreas = useResearchAreas();
+  const publications = usePublications();
 
   const getPublicationTitle = (pubId: string): string | null => {
     const pub = publications.find((p) => p.id === pubId);

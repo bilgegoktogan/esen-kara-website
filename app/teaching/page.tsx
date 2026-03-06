@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/lib/language-context";
-import { courses } from "@/lib/data";
+import { useCourses } from "@/lib/sanity/useSanityData";
 import { motion } from "framer-motion";
 import { GraduationCap, BookOpen, Users } from "lucide-react";
 
@@ -20,6 +20,7 @@ const staggerContainer = {
 
 export default function TeachingPage() {
   const { t } = useLanguage();
+  const courses = useCourses();
 
   const undergraduate = courses.filter((c) => c.level === "undergraduate");
   const graduate = courses.filter((c) => c.level === "graduate");
