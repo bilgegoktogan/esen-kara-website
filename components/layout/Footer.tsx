@@ -10,7 +10,7 @@ export default function Footer() {
   const { t } = useLanguage();
   const pathname = usePathname();
 
-  if (pathname.startsWith("/studio")) return null;
+  if (pathname.startsWith("/studio") || pathname.startsWith("/structure") || pathname.startsWith("/vision")) return null;
 
   return (
     <footer className="border-t mt-20" style={{ borderColor: "var(--card-border)" }}>
