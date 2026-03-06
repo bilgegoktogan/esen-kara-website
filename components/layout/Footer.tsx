@@ -1,12 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Instagram, BookOpen, GraduationCap, Globe } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { siteConfig } from "@/lib/data";
 
 export default function Footer() {
   const { t } = useLanguage();
+  const pathname = usePathname();
+
+  if (pathname.startsWith("/studio")) return null;
 
   return (
     <footer className="border-t mt-20" style={{ borderColor: "var(--card-border)" }}>
