@@ -13,7 +13,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/studio",
-        destination: "/studio/structure",
+        destination: "https://esen-kara.sanity.studio",
+        permanent: false,
+      },
+      {
+        source: "/studio/:path*",
+        destination: "https://esen-kara.sanity.studio",
         permanent: false,
       },
     ];

@@ -14,7 +14,7 @@ export default function Header() {
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
 
-  if (pathname.startsWith("/studio") || pathname.startsWith("/structure") || pathname.startsWith("/vision")) return null;
+  if (pathname.startsWith("/studio")) return null;
   const { lang, toggleLanguage } = useLanguage();
 
   const items = navItems[lang];
