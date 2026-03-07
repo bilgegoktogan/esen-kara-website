@@ -169,9 +169,9 @@ export const publications: Publication[] = [
     id: "pub-0",
     title:
       "Against the Currents of History: Affect and the Ethics of Witnessing in Julia Alvarez's Travel Writing",
-    journal: "",
+    journal: "To be published",
     year: 2025,
-    type: "chapter",
+    type: "article",
     field: ["Memory Studies", "Comparative Literature"],
   },
   {

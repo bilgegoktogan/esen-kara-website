@@ -42,14 +42,14 @@ export default function PublicationsPage() {
 
   const typeFilterOptions: { key: TypeFilter; labelEn: string; labelTr: string }[] = [
     { key: "all", labelEn: "All", labelTr: "Tümü" },
-    { key: "article", labelEn: "Articles", labelTr: "Makaleler" },
+    { key: "article", labelEn: "Journal Articles", labelTr: "Dergi Makaleleri" },
     { key: "chapter", labelEn: "Book Chapters", labelTr: "Kitap Bölümleri" },
   ];
 
   const getTypeBadge = (type: Publication["type"]) => {
     switch (type) {
       case "article":
-        return { labelEn: "Article", labelTr: "Makale" };
+        return { labelEn: "Journal Article", labelTr: "Dergi Makalesi" };
       case "chapter":
         return { labelEn: "Book Chapter", labelTr: "Kitap Bölümü" };
       default:
