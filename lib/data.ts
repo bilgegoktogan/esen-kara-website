@@ -5,6 +5,7 @@ export interface Publication {
   year: number;
   type: "article" | "book" | "chapter";
   doi?: string;
+  url?: string;
   coAuthors?: string[];
   abstract?: string;
   field: string[];
@@ -173,8 +174,7 @@ export const publications: Publication[] = [
     type: "article",
     coAuthors: ["Ayşegül Avcı"],
     field: ["Comparative Literature", "Urban Theory"],
-    abstract:
-      "This article examines early nineteenth century American travelogues about Izmir, exploring cosmopolitan encounters and everyday exclusions in the city's representations.",
+    url: "https://dergipark.org.tr/en/pub/cankujhss/article/1800157",
   },
   {
     id: "pub-1",
@@ -184,8 +184,7 @@ export const publications: Publication[] = [
     year: 2025,
     type: "article",
     field: ["Ecocriticism", "Memory Studies", "Postcolonial Studies"],
-    abstract:
-      "This article explores the intersection of ecological imagination and women's memory in contemporary Turkish literature, examining how female authors engage with environmental consciousness and collective remembrance.",
+    url: "https://www.tandfonline.com/doi/full/10.1080/1369801X.2025.2544134",
   },
   {
     id: "pub-2",
@@ -195,9 +194,7 @@ export const publications: Publication[] = [
     year: 2025,
     type: "book",
     field: ["Memory Studies", "Comparative Literature"],
-    abstract:
-      "Bu kitap, Toni Morrison'ın Sevilen romanında temsil-ötesi bellek ve duygulanımın edebî işleyişini incelemektedir.",
-    coverImage: "/images/book-cover-placeholder.jpg",
+    url: "https://www.amazon.com.tr/Y%C3%BCzy%C4%B1l-Amerikan-Roman%C4%B1-%C3%9Czerine-%C4%B0ncelemeler/dp/625376179X",
   },
   {
     id: "pub-4",
@@ -207,8 +204,7 @@ export const publications: Publication[] = [
     year: 2023,
     type: "article",
     field: ["Urban Theory", "Comparative Literature"],
-    abstract:
-      "Bu makale, Fosforlu Cevriye romanını dişil kent bilinci ve flanöz kavramı üzerinden incelemektedir.",
+    url: "https://dergipark.org.tr/tr/pub/huefd/article/1169166",
   },
   {
     id: "pub-5",
@@ -218,8 +214,7 @@ export const publications: Publication[] = [
     year: 2020,
     type: "article",
     field: ["Urban Theory", "Postcolonial Studies"],
-    abstract:
-      "This article examines how Héctor Tobar's The Tattooed Soldier portrays urban refugees navigating the thresholds of Los Angeles, exploring themes of displacement, violence, and the right to the city.",
+    url: "https://www.tandfonline.com/doi/full/10.1080/00111619.2020.1712318",
   },
   {
     id: "pub-6",
@@ -228,8 +223,7 @@ export const publications: Publication[] = [
     year: 2020,
     type: "article",
     field: ["Urban Theory", "Ecocriticism"],
-    abstract:
-      "This article analyzes the tension between pastoral ideals and the realities of the neoliberal city in contemporary literature.",
+    url: "http://monografjournal.com/sayilar/13/06-esen-kara.pdf",
   },
   {
     id: "pub-7",
@@ -239,8 +233,16 @@ export const publications: Publication[] = [
     year: 2018,
     type: "article",
     field: ["Urban Theory", "Comparative Literature"],
-    abstract:
-      "This article explores how Karen Tei Yamashita's Tropic of Orange reimagines Los Angeles as an oeuvre—a collective work—through its polyphonic narrative structure and spatial imagination.",
+    url: "https://englishlit.ege.edu.tr/files/englishlit/icerik/Interactions%20Vol_27_1-2.pdf",
+  },
+  {
+    id: "pub-8",
+    title: "Kent Üzerine: Düş, Yer, Müşterek ve Hareket",
+    journal: "",
+    year: 2018,
+    type: "book",
+    field: ["Urban Theory"],
+    url: "https://www.idefix.com/kent-uzerine-dus-yer-musterek-ve-hareket-p-1861315",
   },
 ];
 

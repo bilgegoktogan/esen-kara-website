@@ -4,7 +4,7 @@ import { useLanguage } from "@/lib/language-context";
 import { usePublications, useSiteSettings } from "@/lib/sanity/useSanityData";
 import type { Publication } from "@/lib/data";
 import { motion } from "framer-motion";
-import { Filter, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
+import { Filter, ExternalLink } from "lucide-react";
 import { useState } from "react";
 
 const fadeInUp = {
@@ -23,13 +23,11 @@ const staggerContainer = {
 type TypeFilter = "all" | "article" | "book";
 
 export default function PublicationsPage() {
-  const { lang, t } = useLanguage();
+  const { t } = useLanguage();
   const publications = usePublications();
   const siteConfig = useSiteSettings();
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("all");
   const [fieldFilter, setFieldFilter] = useState<string>("all");
-  const [expandedAbstracts, setExpandedAbstracts] = useState<Set<string>>(new Set());
-
   // Gather unique fields from all publications
   const allFields = Array.from(
     new Set(publications.flatMap((p) => p.field))
@@ -41,18 +39,6 @@ export default function PublicationsPage() {
     const matchesField = fieldFilter === "all" || pub.field.includes(fieldFilter);
     return matchesType && matchesField;
   });
-
-  const toggleAbstract = (id: string) => {
-    setExpandedAbstracts((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
-      return next;
-    });
-  };
 
   const typeFilterOptions: { key: TypeFilter; labelEn: string; labelTr: string }[] = [
     { key: "all", labelEn: "All", labelTr: "Tümü" },
@@ -202,7 +188,6 @@ export default function PublicationsPage() {
               </motion.p>
             ) : (
               filteredPublications.map((pub) => {
-                const isExpanded = expandedAbstracts.has(pub.id);
                 const badge = getTypeBadge(pub.type);
 
                 return (
@@ -291,27 +276,11 @@ export default function PublicationsPage() {
                           ))}
                         </div>
 
-                        {/* Abstract Toggle & DOI */}
-                        <div className="mt-3 flex flex-wrap items-center gap-3">
-                          {pub.abstract && (
-                            <button
-                              onClick={() => toggleAbstract(pub.id)}
-                              className="inline-flex items-center gap-1 text-sm font-medium transition-colors duration-200 hover:opacity-80"
-                              style={{ color: "#B87333" }}
-                            >
-                              {isExpanded
-                                ? t("Hide Abstract", "Özeti Gizle")
-                                : t("Show Abstract", "Özeti Göster")}
-                              {isExpanded ? (
-                                <ChevronUp size={14} />
-                              ) : (
-                                <ChevronDown size={14} />
-                              )}
-                            </button>
-                          )}
-                          {pub.doi && (
+                        {/* Link */}
+                        {pub.url && (
+                          <div className="mt-3">
                             <a
-                              href={`https://doi.org/${pub.doi}`}
+                              href={pub.url}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-all duration-200 hover:opacity-80"
@@ -321,26 +290,9 @@ export default function PublicationsPage() {
                               }}
                             >
                               <ExternalLink size={12} />
-                              DOI
+                              {t("View Publication", "Yayını Görüntüle")}
                             </a>
-                          )}
-                        </div>
-
-                        {/* Abstract Content */}
-                        {pub.abstract && isExpanded && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="mt-3 rounded-lg p-4 text-sm leading-relaxed"
-                            style={{
-                              backgroundColor: "rgba(45, 74, 62, 0.04)",
-                              border: "1px solid var(--card-border)",
-                            }}
-                          >
-                            {pub.abstract}
-                          </motion.div>
+                          </div>
                         )}
                       </div>
                     </div>
