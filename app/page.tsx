@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
@@ -37,32 +38,21 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid min-h-[85vh] grid-cols-1 items-center gap-8 py-12 lg:grid-cols-2 lg:gap-16 lg:py-0">
-            {/* Photo placeholder */}
+            {/* Profile Photo */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" as const }}
               className="order-2 lg:order-1"
             >
-              <div className="relative mx-auto aspect-[3/4] w-full max-w-md overflow-hidden rounded-2xl bg-olive shadow-2xl lg:max-w-none">
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-cream/60">
-                  <svg
-                    className="h-16 w-16"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1}
-                      d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-                    />
-                  </svg>
-                  <span className="font-sans text-sm tracking-wide">
-                    {t("Photo coming soon", "Fotoğraf yakında")}
-                  </span>
-                </div>
+              <div className="relative mx-auto aspect-[3/4] w-full max-w-md overflow-hidden rounded-2xl shadow-2xl lg:max-w-none">
+                <Image
+                  src="/images/esen-profile.jpg"
+                  alt="Esen Kara"
+                  fill
+                  className="object-cover"
+                  priority
+                />
                 {/* Decorative accent */}
                 <div className="absolute -bottom-4 -right-4 h-24 w-24 rounded-full bg-copper/20 blur-2xl" />
               </div>
