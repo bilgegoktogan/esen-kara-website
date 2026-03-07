@@ -4,7 +4,7 @@ import { useLanguage } from "@/lib/language-context";
 import { usePublications, useSiteSettings } from "@/lib/sanity/useSanityData";
 import type { Publication } from "@/lib/data";
 import { motion } from "framer-motion";
-import { Filter, ExternalLink, ChevronDown, ChevronUp, BookOpen } from "lucide-react";
+import { Filter, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 
 const fadeInUp = {
@@ -41,9 +41,6 @@ export default function PublicationsPage() {
     const matchesField = fieldFilter === "all" || pub.field.includes(fieldFilter);
     return matchesType && matchesField;
   });
-
-  // Find book(s) for highlight section
-  const bookPublications = publications.filter((p) => p.type === "book");
 
   const toggleAbstract = (id: string) => {
     setExpandedAbstracts((prev) => {
@@ -181,132 +178,6 @@ export default function PublicationsPage() {
           </motion.div>
         </div>
       </section>
-
-      {/* Book Highlight Section */}
-      {bookPublications.length > 0 &&
-        (typeFilter === "all" || typeFilter === "book") &&
-        (fieldFilter === "all" ||
-          bookPublications.some((b) => b.field.includes(fieldFilter))) && (
-          <section className="px-6 pb-12">
-            <div className="mx-auto max-w-4xl">
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                variants={fadeInUp}
-                transition={{ duration: 0.6 }}
-              >
-                {bookPublications
-                  .filter(
-                    (book) =>
-                      fieldFilter === "all" || book.field.includes(fieldFilter)
-                  )
-                  .map((book) => (
-                    <div
-                      key={book.id}
-                      className="relative overflow-hidden rounded-2xl p-8 md:p-12"
-                      style={{ backgroundColor: "#2D4A3E" }}
-                    >
-                      {/* Decorative elements */}
-                      <div
-                        className="absolute -top-20 -right-20 h-64 w-64 rounded-full opacity-10"
-                        style={{ backgroundColor: "#B87333" }}
-                      />
-                      <div
-                        className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full opacity-10"
-                        style={{ backgroundColor: "#B87333" }}
-                      />
-
-                      <div className="relative z-10 flex flex-col gap-8 md:flex-row md:items-start">
-                        {/* Book Cover Placeholder */}
-                        <div
-                          className="mx-auto flex h-72 w-48 shrink-0 items-center justify-center rounded-lg shadow-xl md:mx-0"
-                          style={{
-                            backgroundColor: "#F5F0EB",
-                            border: "3px solid #B87333",
-                          }}
-                        >
-                          <div className="flex flex-col items-center gap-3 px-4 text-center">
-                            <BookOpen size={36} style={{ color: "#2D4A3E" }} />
-                            <span
-                              className="font-serif text-xs font-semibold leading-tight"
-                              style={{ color: "#2D4A3E" }}
-                            >
-                              {book.title.length > 60
-                                ? book.title.slice(0, 60) + "..."
-                                : book.title}
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* Book Details */}
-                        <div className="flex-1">
-                          <span
-                            className="inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider"
-                            style={{
-                              backgroundColor: "rgba(184, 115, 51, 0.2)",
-                              color: "#B87333",
-                            }}
-                          >
-                            {t("Book", "Kitap")}
-                          </span>
-                          <h2 className="mt-3 font-serif text-2xl font-bold leading-snug md:text-3xl" style={{ color: "#F5F0EB" }}>
-                            {book.title}
-                          </h2>
-                          <p className="mt-1 text-sm" style={{ color: "rgba(245, 240, 235, 0.6)" }}>
-                            {book.year}
-                          </p>
-                          {book.coAuthors && book.coAuthors.length > 0 && (
-                            <p className="mt-2 text-sm" style={{ color: "rgba(245, 240, 235, 0.7)" }}>
-                              {t("with", "ile")}{" "}
-                              {book.coAuthors.join(", ")}
-                            </p>
-                          )}
-                          {book.abstract && (
-                            <p
-                              className="mt-4 text-sm leading-relaxed md:text-base md:leading-relaxed"
-                              style={{ color: "rgba(245, 240, 235, 0.85)" }}
-                            >
-                              {book.abstract}
-                            </p>
-                          )}
-                          <div className="mt-4 flex flex-wrap gap-2">
-                            {book.field.map((f) => (
-                              <span
-                                key={f}
-                                className="rounded-full px-2.5 py-0.5 text-xs"
-                                style={{
-                                  backgroundColor: "rgba(245, 240, 235, 0.15)",
-                                  color: "rgba(245, 240, 235, 0.8)",
-                                }}
-                              >
-                                {f}
-                              </span>
-                            ))}
-                          </div>
-                          {book.doi && (
-                            <a
-                              href={`https://doi.org/${book.doi}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="mt-5 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-opacity duration-200 hover:opacity-80"
-                              style={{
-                                backgroundColor: "#B87333",
-                                color: "#F5F0EB",
-                              }}
-                            >
-                              <ExternalLink size={14} />
-                              DOI
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-              </motion.div>
-            </div>
-          </section>
-        )}
 
       {/* Publications List */}
       <section className="px-6 pb-16">
