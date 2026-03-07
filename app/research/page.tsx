@@ -1,32 +1,15 @@
 "use client";
 
 import { useLanguage } from "@/lib/language-context";
-import { useResearchAreas, usePublications } from "@/lib/sanity/useSanityData";
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 },
 };
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12 },
-  },
-};
-
 export default function ResearchPage() {
-  const { lang, t } = useLanguage();
-  const researchAreas = useResearchAreas();
-  const publications = usePublications();
-
-  const getPublicationTitle = (pubId: string): string | null => {
-    const pub = publications.find((p) => p.id === pubId);
-    return pub ? pub.title : null;
-  };
+  const { t } = useLanguage();
 
   return (
     <div
@@ -49,90 +32,6 @@ export default function ResearchPage() {
               className="mt-4 h-1 w-20 rounded-full"
               style={{ backgroundColor: "#B87333" }}
             />
-            <p className="mt-6 max-w-2xl font-sans text-lg text-ink-light leading-relaxed">
-              {t(
-                "My research explores how literature imagines and reimagines urban spaces, ecological relations, and collective memory. Working across languages and traditions, I investigate the intersections of comparative literature, memory studies, ecocriticism, and critical urban theory to understand the stories that shape our relationship with the world.",
-                "Ara\u015Ft\u0131rmalar\u0131m, edebiyat\u0131n kentsel mek\u00E2nlar\u0131, ekolojik ili\u015Fkileri ve kolektif belle\u011Fi nas\u0131l tasavvur etti\u011Fini ve yeniden kurgulad\u0131\u011F\u0131n\u0131 inceliyor. Diller ve gelenekler aras\u0131nda \u00E7al\u0131\u015Farak, kar\u015F\u0131la\u015Ft\u0131rmal\u0131 edebiyat, bellek \u00E7al\u0131\u015Fmalar\u0131, ekoele\u015Ftiri ve ele\u015Ftirel kent kuram\u0131n\u0131n kesi\u015Fim noktalar\u0131n\u0131, d\u00FCnyayla ili\u015Fkimizi \u015Fekillendiren hikayeleri anlamak i\u00E7in ara\u015Ft\u0131r\u0131yorum."
-              )}
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Research Areas Grid */}
-      <section className="px-6 py-12 md:py-20">
-        <div className="mx-auto max-w-6xl">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={staggerContainer}
-            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
-          >
-            {researchAreas.map((area) => {
-              const relatedPubs = area.publications
-                .map((pubId) => ({
-                  id: pubId,
-                  title: getPublicationTitle(pubId),
-                }))
-                .filter((p) => p.title !== null);
-
-              return (
-                <motion.div
-                  key={area.id}
-                  variants={fadeInUp}
-                  transition={{ duration: 0.5 }}
-                  className="group rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg md:p-8"
-                  style={{
-                    backgroundColor: "var(--card-bg)",
-                    border: "1px solid var(--card-border)",
-                  }}
-                >
-                  {/* Icon */}
-                  <div className="mb-4 text-4xl">{area.icon}</div>
-
-                  {/* Title */}
-                  <h3
-                    className="font-serif text-xl font-semibold md:text-2xl"
-                    style={{ color: "var(--foreground)" }}
-                  >
-                    {lang === "en" ? area.title : area.titleTr}
-                  </h3>
-
-                  {/* Copper accent line */}
-                  <div
-                    className="mt-3 h-0.5 w-10 rounded-full transition-all duration-300 group-hover:w-16"
-                    style={{ backgroundColor: "#B87333" }}
-                  />
-
-                  {/* Description */}
-                  <p className="mt-4 text-sm leading-relaxed text-ink-light">
-                    {lang === "en" ? area.description : area.descriptionTr}
-                  </p>
-
-                  {/* Related Publications */}
-                  {relatedPubs.length > 0 && (
-                    <div className="mt-6 border-t pt-4" style={{ borderColor: "var(--card-border)" }}>
-                      <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-copper">
-                        {t("Related Publications", "\u0130lgili Yay\u0131nlar")}
-                      </p>
-                      <ul className="space-y-2">
-                        {relatedPubs.map((pub) => (
-                          <li key={pub.id}>
-                            <Link
-                              href="/publications"
-                              className="text-sm leading-snug text-ink-lighter transition-colors duration-200 hover:text-copper"
-                            >
-                              {pub.title}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </motion.div>
-              );
-            })}
           </motion.div>
         </div>
       </section>
