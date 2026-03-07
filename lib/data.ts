@@ -255,7 +255,7 @@ export const courses: Course[] = [
     name: "Turkish Literature in a Comparative Context",
     level: "undergraduate",
     description:
-      "A comparative study of Turkish literary traditions in dialogue with world literatures, exploring cross-cultural connections and transnational themes.",
+      "Postcolonial literature refers to literary works that were produced and take as their subject matter the encounters between colonizers and the colonized. More commonly, however, it designates the contact that European colonizers established with the rest of the world over the last four hundred years. Since this period witnessed major paradigm shifts, such as the rise of humanism, the Enlightenment, and the making of modernity, the attempt to universalize and disseminate certain ideas brought questions of cultural relativity and power to the forefront. The primary aim of this course is therefore to familiarize students with a representative chronology of Anglophone postcolonial literature and with the critical terms commonly used to examine such works, while also introducing them to the latest discussions in the field of postcolonial studies. At a more specific level, this course will serve as a joint experiment in exploring the affinities and organic ties between the novel as a genre and postcolonial forms of literary expression. Accordingly, our reading list will also include texts on the theory of the novel.",
   },
   {
     name: "Contemporary American Literature",
