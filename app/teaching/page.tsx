@@ -3,7 +3,7 @@
 import { useLanguage } from "@/lib/language-context";
 import { useCourses } from "@/lib/sanity/useSanityData";
 import { motion } from "framer-motion";
-import { GraduationCap, Users } from "lucide-react";
+import { GraduationCap } from "lucide-react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -106,62 +106,6 @@ export default function TeachingPage() {
                 </p>
               </motion.div>
             ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Mentoring Section */}
-      <section className="px-6 py-16 md:py-24">
-        <div className="mx-auto max-w-6xl">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={fadeInUp}
-            transition={{ duration: 0.6 }}
-          >
-            <div
-              className="relative overflow-hidden rounded-2xl p-8 md:p-12"
-              style={{ backgroundColor: "#2D4A3E" }}
-            >
-              {/* Decorative background elements */}
-              <div
-                className="absolute -top-20 -right-20 h-64 w-64 rounded-full opacity-10"
-                style={{ backgroundColor: "#B87333" }}
-              />
-              <div
-                className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full opacity-10"
-                style={{ backgroundColor: "#B87333" }}
-              />
-
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-6">
-                  <Users className="h-7 w-7 text-copper-light" />
-                  <h2 className="font-serif text-3xl font-bold text-cream md:text-4xl">
-                    {t("Mentoring & Supervision", "Danışmanlık ve Tez Yönetimi")}
-                  </h2>
-                </div>
-                <div
-                  className="h-1 w-16 rounded-full"
-                  style={{ backgroundColor: "#B87333" }}
-                />
-
-                <div className="mt-8 space-y-5 text-base leading-relaxed text-cream/90 md:text-lg md:leading-relaxed">
-                  <p>
-                    {t(
-                      "I actively supervise graduate theses and mentor students at both the undergraduate and graduate levels. I welcome students who are interested in exploring topics related to comparative literature, postcolonial studies, ecocriticism, memory and literature, and critical urban theory. My approach to mentoring emphasizes intellectual curiosity, independent thinking, and rigorous scholarly practice.",
-                      "Lisans ve lisansüstü düzeylerde aktif olarak tez danışmanlığı yapıyor ve öğrencilere mentorluk ediyorum. Karşılaştırmalı edebiyat, post-kolonyal çalışmalar, ekoeleştiri, bellek ve edebiyat ile eleştirel kent kuramı konularında çalışmak isteyen öğrencileri memnuniyetle karşılıyorum. Mentorluk yaklaşımım entelektüel merak, bağımsız düşünce ve titiz akademik pratiği ön plana çıkarıyor."
-                    )}
-                  </p>
-                  <p>
-                    {t(
-                      "If you are a prospective student interested in working with me, feel free to reach out to discuss potential research directions and supervision opportunities.",
-                      "Benimle çalışmak isteyen bir öğrenci adayıysanız, olası araştırma yönlerini ve danışmanlık fırsatlarını görüşmek için benimle iletişime geçmekten çekinmeyin."
-                    )}
-                  </p>
-                </div>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>
