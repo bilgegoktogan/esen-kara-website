@@ -74,63 +74,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Bio Section -- Split Layout */}
+      {/* Bio Section */}
       <section className="px-6 py-12 md:py-20">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto max-w-4xl">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={staggerContainer}
-            className="grid gap-12 md:grid-cols-5"
           >
-            {/* Photo Placeholder */}
-            <motion.div variants={fadeInUp} className="md:col-span-2">
-              <div
-                className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl"
-                style={{
-                  backgroundColor: "var(--card-bg)",
-                  border: "1px solid var(--card-border)",
-                }}
-              >
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-8">
-                  <div
-                    className="flex h-20 w-20 items-center justify-center rounded-full"
-                    style={{ backgroundColor: "rgba(184, 115, 51, 0.1)" }}
-                  >
-                    <span className="text-3xl font-serif font-bold text-copper">
-                      EK
-                    </span>
-                  </div>
-                  <p className="text-sm text-ink-lighter text-center">
-                    {t("Photo coming soon", "Fotograf yakinda eklenecek")}
-                  </p>
-                </div>
-                {/* Decorative corner accents */}
-                <div
-                  className="absolute top-0 left-0 h-16 w-16"
-                  style={{
-                    borderTop: "3px solid #B87333",
-                    borderLeft: "3px solid #B87333",
-                    borderTopLeftRadius: "1rem",
-                  }}
-                />
-                <div
-                  className="absolute bottom-0 right-0 h-16 w-16"
-                  style={{
-                    borderBottom: "3px solid #B87333",
-                    borderRight: "3px solid #B87333",
-                    borderBottomRightRadius: "1rem",
-                  }}
-                />
-              </div>
-            </motion.div>
-
-            {/* Biography */}
-            <motion.div
-              variants={fadeInUp}
-              className="md:col-span-3 flex flex-col justify-center"
-            >
+            <motion.div variants={fadeInUp}>
               <h2 className="font-serif text-3xl font-bold text-olive md:text-4xl">
                 {siteConfig.name}
               </h2>
@@ -142,24 +95,14 @@ export default function AboutPage() {
               </p>
 
               <div className="mt-8 space-y-5 text-base leading-relaxed">
-                <p style={{ color: "var(--foreground)" }}>
-                  {t(
-                    "I am an Assistant Professor of English Language and Literature at Yasar University in Izmir, Turkey. My academic journey began at Ankara University, where I studied English Language and Literature, and continued at Dokuz Eylul University, where I completed both my master's and doctoral studies in American Culture and Literature.",
-                    "Izmir'deki Yasar Universitesi'nde Ingiliz Dili ve Edebiyati Bolumu'nde Dr. Ogretim Uyesi olarak gorev yapiyorum. Akademik yolculugum Ankara Universitesi'nde Ingiliz Dili ve Edebiyati egitimimle basladi ve Dokuz Eylul Universitesi'nde Amerikan Kulturu ve Edebiyati alaninda hem yuksek lisans hem de doktora calismalarimla devam etti."
-                  )}
-                </p>
-                <p style={{ color: "var(--foreground)" }}>
-                  {t(
-                    "My research sits at the crossroads of comparative literature, memory studies, ecocriticism, and critical urban theory. I am fascinated by how literature imagines and reimagines urban spaces, ecological relations, and collective memory. My doctoral work focused on the 'Right to the City' movement and its representations in the transnational American novel, a theme that continues to shape my scholarship.",
-                    "Arastirmalarim karsilastirmali edebiyat, bellek calismalari, ekoelestiri ve elestirel kent kuraminin kesisim noktalarinda yer aliyor. Edebiyatin kentsel mekanlari, ekolojik iliskileri ve kolektif bellegi nasil tasavvur ettigi ve yeniden kurguladi beni derinden etkiliyor. Doktora calismam, ulusotesi Amerikan romaninda 'Kente Hakki' hareketi ve temsillerine odaklanmisti ve bu tema akademik calismalarima yon vermeye devam ediyor."
-                  )}
-                </p>
-                <p style={{ color: "var(--foreground)" }}>
-                  {t(
-                    "Beyond the academy, I believe in the power of literature to bridge cultures and languages. Whether I'm exploring how a Turkish novel reimagines flanerie through a feminine consciousness or examining ecological memory in postcolonial fiction, my work is driven by a conviction that stories shape how we understand our cities, our environments, and ourselves.",
-                    "Akademinin otesinde, edebiyatin kulturleri ve dilleri birbirine baglama gucune inaniyorum. Ister bir Turk romaninin flanozlugu disil bir bilincle nasil yeniden kurguledigini arastiriyorum, ister post-kolonyal kurguda ekolojik bellegi inceliyorum; calismalarimi, hikayelerin kentlerimizi, cevrelerimizi ve kendimizi anlama bicimllerimizi sekillendirdigi inanci yonlendiriyor."
-                  )}
-                </p>
+                {t(siteConfig.bio.en, siteConfig.bio.tr)
+                  .split("\n\n")
+                  .filter(Boolean)
+                  .map((paragraph, i) => (
+                    <p key={i} style={{ color: "var(--foreground)" }}>
+                      {paragraph}
+                    </p>
+                  ))}
               </div>
             </motion.div>
           </motion.div>
