@@ -218,7 +218,7 @@ export const publications: Publication[] = [
   {
     id: "pub-4b",
     title:
-      "Introduction: Portakal Dönencesi, Karen Tei Yamashita",
+      "Önsöz: Portakal Dönencesi, Karen Tei Yamashita",
     journal: "",
     year: 2023,
     type: "chapter",
