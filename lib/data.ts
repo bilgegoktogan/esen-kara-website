@@ -261,7 +261,7 @@ export const courses: Course[] = [
     name: "Contemporary American Literature",
     level: "undergraduate",
     description:
-      "A study of major works and movements in contemporary American literature, with attention to diversity, identity, and evolving narrative forms.",
+      "This course examines American fiction from the postwar era to the early twenty-first century, focusing on how literary form and narrative voice respond to shifting social, cultural, and historical conditions. Beginning with the postwar conformity of the 1950s and the countercultural movements that challenged it, the course moves into the Civil Rights era and the emergence of new literary voices that foreground questions of race, gender, and social transformation. The course then explores the experimental and skeptical narratives associated with postmodern fiction, including fragmented storytelling, narrative indeterminacy, and representations of dislocated subjectivities. Later sections turn to late twentieth-century fiction that reflects minimalist prose, domestic realism, and an intensified focus on everyday life and interpersonal tensions. The course also addresses the rise of Indigenous and multicultural literatures that revisit colonial histories and challenge dominant national narratives. Concluding with twenty-first-century multicultural and transnational fiction, the course examines themes of diaspora, identity, and cultural memory. Together, literary texts and related cultural materials illuminate how American fiction across the late twentieth and early twenty-first centuries reimagines national myths, identity, and belonging.",
   },
 ];
 
