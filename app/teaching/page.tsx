@@ -45,8 +45,8 @@ export default function TeachingPage() {
             />
             <p className="mt-6 max-w-2xl font-sans text-lg text-ink-light leading-relaxed">
               {t(
-                "I teach courses at both graduate and undergraduate levels in the areas of Postcolonial Literature and Multiculturalism, Turkish Literature in a Comparative Context, and Contemporary American Literature.",
-                "Lisans ve lisansüstü düzeylerde Postkolonyal Edebiyat ve Çokkültürlülük, Karşılaştırmalı Bağlamda Türk Edebiyatı ve Çağdaş Amerikan Edebiyatı alanlarında dersler vermekteyim."
+                "I teach undergraduate and graduate courses in the areas of Postcolonial Studies, Modern Turkish Literature, and American Literature. My teaching focuses on the historical, cultural, and theoretical contexts of literary texts, encouraging students to engage critically with literature across different periods, geographies, and intellectual traditions.",
+                "Lisans ve lisansüstü düzeylerde Postkolonyal Çalışmalar, Modern Türk Edebiyatı ve Amerikan Edebiyatı alanlarında dersler vermekteyim. Öğretimim, edebi metinlerin tarihsel, kültürel ve kuramsal bağlamlarına odaklanarak öğrencileri farklı dönemler, coğrafyalar ve entelektüel gelenekler arasında edebiyatla eleştirel bir şekilde etkileşime girmeye teşvik etmektedir."
               )}
             </p>
           </motion.div>
