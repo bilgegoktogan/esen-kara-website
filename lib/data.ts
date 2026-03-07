@@ -216,6 +216,16 @@ export const publications: Publication[] = [
     url: "https://dergipark.org.tr/tr/pub/huefd/article/1169166",
   },
   {
+    id: "pub-4b",
+    title:
+      "Introduction: Portakal Dönencesi, Karen Tei Yamashita",
+    journal: "",
+    year: 2023,
+    type: "chapter",
+    field: ["Comparative Literature"],
+    url: "https://liverayayinevi.com/urun/portakal-donencesi",
+  },
+  {
     id: "pub-5",
     title:
       "Crossing the Threshold of the City: Urban Refugees in Héctor Tobar's The Tattooed Soldier",
