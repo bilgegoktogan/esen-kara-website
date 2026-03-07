@@ -20,7 +20,7 @@ const staggerContainer = {
   },
 };
 
-type TypeFilter = "all" | "article" | "book";
+type TypeFilter = "all" | "article" | "chapter";
 
 export default function PublicationsPage() {
   const { t } = useLanguage();
@@ -43,17 +43,15 @@ export default function PublicationsPage() {
   const typeFilterOptions: { key: TypeFilter; labelEn: string; labelTr: string }[] = [
     { key: "all", labelEn: "All", labelTr: "Tümü" },
     { key: "article", labelEn: "Articles", labelTr: "Makaleler" },
-    { key: "book", labelEn: "Books", labelTr: "Kitaplar" },
+    { key: "chapter", labelEn: "Book Chapters", labelTr: "Kitap Bölümleri" },
   ];
 
   const getTypeBadge = (type: Publication["type"]) => {
     switch (type) {
       case "article":
         return { labelEn: "Article", labelTr: "Makale" };
-      case "book":
-        return { labelEn: "Book", labelTr: "Kitap" };
       case "chapter":
-        return { labelEn: "Chapter", labelTr: "Bolum" };
+        return { labelEn: "Book Chapter", labelTr: "Kitap Bölümü" };
       default:
         return { labelEn: type, labelTr: type };
     }
@@ -223,11 +221,11 @@ export default function PublicationsPage() {
                             className="inline-block rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider"
                             style={{
                               backgroundColor:
-                                pub.type === "book"
+                                pub.type === "chapter"
                                   ? "rgba(184, 115, 51, 0.15)"
                                   : "rgba(45, 74, 62, 0.1)",
                               color:
-                                pub.type === "book" ? "#B87333" : "#2D4A3E",
+                                pub.type === "chapter" ? "#B87333" : "#2D4A3E",
                             }}
                           >
                             {t(badge.labelEn, badge.labelTr)}

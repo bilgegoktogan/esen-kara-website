@@ -166,6 +166,15 @@ export const researchAreas: ResearchArea[] = [
 
 export const publications: Publication[] = [
   {
+    id: "pub-0",
+    title:
+      "Against the Currents of History: Affect and the Ethics of Witnessing in Julia Alvarez's Travel Writing",
+    journal: "",
+    year: 2025,
+    type: "chapter",
+    field: ["Memory Studies", "Comparative Literature"],
+  },
+  {
     id: "pub-3a",
     title:
       "Cosmopolitan Encounters and Everyday Exclusions: Izmir in Early Nineteenth Century American Travelogues",
@@ -192,7 +201,7 @@ export const publications: Publication[] = [
       "Toni Morrison'ın Sevilen Romanında Temsil-Ötesi Bellek ve Duygulanım",
     journal: "",
     year: 2025,
-    type: "book",
+    type: "chapter",
     field: ["Memory Studies", "Comparative Literature"],
     url: "https://www.amazon.com.tr/Y%C3%BCzy%C4%B1l-Amerikan-Roman%C4%B1-%C3%9Czerine-%C4%B0ncelemeler/dp/625376179X",
   },
@@ -240,7 +249,7 @@ export const publications: Publication[] = [
     title: "Kent Üzerine: Düş, Yer, Müşterek ve Hareket",
     journal: "",
     year: 2018,
-    type: "book",
+    type: "chapter",
     field: ["Urban Theory"],
     url: "https://www.idefix.com/kent-uzerine-dus-yer-musterek-ve-hareket-p-1861315",
   },
