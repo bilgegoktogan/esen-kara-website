@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
-import { useSiteSettings, useResearchAreas, usePublications, useBlogPosts } from "@/lib/sanity/useSanityData";
+import { useSiteSettings, usePublications, useBlogPosts } from "@/lib/sanity/useSanityData";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -25,7 +25,6 @@ const stagger = {
 export default function Home() {
   const { lang, t } = useLanguage();
   const siteConfig = useSiteSettings();
-  const researchAreas = useResearchAreas();
   const publications = usePublications();
   const blogPosts = useBlogPosts();
 
@@ -199,74 +198,6 @@ export default function Home() {
                 </motion.div>
               </motion.div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Research Areas ─── */}
-      <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
-            className="mb-12 text-center"
-          >
-            <h2
-              className="font-serif text-3xl font-bold sm:text-4xl"
-              style={{ color: "var(--foreground)" }}
-            >
-              {t("Research Areas", "Araştırma Alanları")}
-            </h2>
-            <p
-              className="mx-auto mt-4 max-w-2xl font-sans text-base"
-              style={{ color: "var(--foreground)", opacity: 0.6 }}
-            >
-              {t(
-                "My work spans several interconnected fields, bridging literary analysis with spatial and ecological thought.",
-                "Çalışmalarım, edebiyat analizini mekânsal ve ekolojik düşünceyle birleştiren birbiriyle bağlantılı alanlara yayılmaktadır."
-              )}
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {researchAreas.map((area, i) => (
-              <motion.div
-                key={area.id}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
-              >
-                <Link
-                  href={`/research#${area.id}`}
-                  className="group block h-full rounded-xl border p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                  style={{
-                    background: "var(--card-bg)",
-                    borderColor: "var(--card-border)",
-                  }}
-                >
-                  <span className="mb-4 block text-3xl">{area.icon}</span>
-                  <h3
-                    className="mb-2 font-serif text-xl font-semibold transition-colors duration-200 group-hover:text-copper"
-                    style={{ color: "var(--foreground)" }}
-                  >
-                    {t(area.title, area.titleTr)}
-                  </h3>
-                  <p
-                    className="font-sans text-sm leading-relaxed"
-                    style={{ color: "var(--foreground)", opacity: 0.65 }}
-                  >
-                    {t(area.description, area.descriptionTr)}
-                  </p>
-                  <span className="mt-4 inline-flex items-center gap-1 font-sans text-sm font-medium text-copper opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-                    {t("Explore", "Keşfet")}
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </span>
-                </Link>
-              </motion.div>
-            ))}
           </div>
         </div>
       </section>
