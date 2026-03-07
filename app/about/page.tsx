@@ -157,59 +157,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Personal / Research Passions Section */}
-      <section className="px-6 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={fadeInUp}
-            transition={{ duration: 0.6 }}
-          >
-            <div
-              className="relative overflow-hidden rounded-2xl p-8 md:p-12"
-              style={{ backgroundColor: "#2D4A3E" }}
-            >
-              {/* Decorative background element */}
-              <div
-                className="absolute -top-20 -right-20 h-64 w-64 rounded-full opacity-10"
-                style={{ backgroundColor: "#B87333" }}
-              />
-              <div
-                className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full opacity-10"
-                style={{ backgroundColor: "#B87333" }}
-              />
-
-              <div className="relative z-10">
-                <h2 className="font-serif text-3xl font-bold text-cream md:text-4xl">
-                  {t("What Drives My Work", "Calismalarimi Ne Yonlendiriyor")}
-                </h2>
-                <div
-                  className="mt-4 h-1 w-16 rounded-full"
-                  style={{ backgroundColor: "#B87333" }}
-                />
-
-                <div className="mt-8 space-y-5 text-base leading-relaxed text-cream/90 md:text-lg md:leading-relaxed">
-                  <p>
-                    {t(
-                      "I am drawn to the stories that emerge at the margins -- where languages meet, where cities transform, where memory and landscape intertwine. My research is rooted in a deep curiosity about how literary works can illuminate the lived experience of urban space, ecological change, and cultural displacement.",
-                      "Beni cesitli sinirlarda ortaya cikan hikayeler cezbediyor -- dillerin bulusttugu, kentlerin donustugu, bellek ve peyzajin ic ice gectigi yerler. Arastirmalarim, edebi eserlerin kentsel mekanin yasanmis deneyimini, ekolojik degisimi ve kulturel yerinden edilmeyi nasil aydinlatabileceigine dair derin bir meraktan besleniyor."
-                    )}
-                  </p>
-                  <p>
-                    {t(
-                      "Whether it is tracing the figure of the flaneuse through the streets of Istanbul, or examining how postcolonial novels reimagine the right to belong in a global city, I believe that literature offers us essential tools for understanding the world we inhabit -- and the worlds we might yet create.",
-                      "Ister Istanbul sokaklarinda bir flanoz figuru izliyor olayim, ister post-kolonyal romanlarin kuresel bir kentte ait olma hakkini nasil yeniden tasavvur ettigini inceliyorum; edebiyatin, icinde yasadigimiz dunyayi -- ve henuz yaratabilecegimiz dunyalari -- anlamak icin bize temel araclar sunduguna inaniyorum."
-                    )}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Education Timeline */}
       <section className="px-6 py-16 md:py-24">
         <div className="mx-auto max-w-4xl">
