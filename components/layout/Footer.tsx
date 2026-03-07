@@ -2,12 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Instagram, BookOpen, GraduationCap, Globe } from "lucide-react";
-import { useLanguage } from "@/lib/language-context";
-import { siteConfig } from "@/lib/data";
+import { Instagram, GraduationCap, Globe } from "lucide-react";
 
 export default function Footer() {
-  const { t } = useLanguage();
   const pathname = usePathname();
 
   if (pathname.startsWith("/studio")) return null;
@@ -22,33 +19,30 @@ export default function Footer() {
               <span className="text-copper">E</span>sen <span className="text-copper">K</span>ara
             </h3>
             <p className="text-sm leading-relaxed" style={{ color: "var(--foreground)", opacity: 0.7 }}>
-              {t(
-                "Assistant Professor, English Language and Literature",
-                "Dr. Öğr. Üyesi, İngiliz Dili ve Edebiyatı"
-              )}
+              Assistant Professor, English Language and Literature
             </p>
             <p className="text-sm mt-1" style={{ color: "var(--foreground)", opacity: 0.7 }}>
-              {t(siteConfig.university.name.en, siteConfig.university.name.tr)}
+              Yaşar University
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h4 className="font-serif text-sm font-semibold uppercase tracking-wider mb-3 text-copper">
-              {t("Quick Links", "Hızlı Bağlantılar")}
+              Quick Links
             </h4>
             <div className="flex flex-col gap-2 text-sm">
               <Link href="/publications" className="hover:text-copper transition-colors">
-                {t("Publications", "Yayınlar")}
+                Publications
               </Link>
               <Link href="/research" className="hover:text-copper transition-colors">
-                {t("Research", "Araştırma")}
+                Research
               </Link>
               <Link href="/blog" className="hover:text-copper transition-colors">
                 Blog
               </Link>
               <Link href="/contact" className="hover:text-copper transition-colors">
-                {t("Contact", "İletişim")}
+                Contact
               </Link>
             </div>
           </div>
@@ -56,44 +50,35 @@ export default function Footer() {
           {/* Social */}
           <div>
             <h4 className="font-serif text-sm font-semibold uppercase tracking-wider mb-3 text-copper">
-              {t("Connect", "Bağlantılar")}
+              Connect
             </h4>
             <div className="flex flex-wrap gap-3">
               <a
-                href={siteConfig.social.instagram}
+                href="https://avesis.yasar.edu.tr/esen.kara"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-md hover:bg-copper/10 transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
-              </a>
-              <a
-                href={siteConfig.social.scholar}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-md hover:bg-copper/10 transition-colors"
-                aria-label="Google Scholar"
+                aria-label="AVESİS"
               >
                 <GraduationCap size={20} />
               </a>
               <a
-                href={siteConfig.social.academia}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-md hover:bg-copper/10 transition-colors"
-                aria-label="Academia.edu"
-              >
-                <BookOpen size={20} />
-              </a>
-              <a
-                href={siteConfig.social.researchgate}
+                href="https://www.researchgate.net/profile/Esen-Kara-2"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-md hover:bg-copper/10 transition-colors"
                 aria-label="ResearchGate"
               >
                 <Globe size={20} />
+              </a>
+              <a
+                href="https://www.google.com/search?q=instagram+esenkara_&oq=instagram+esenkara_&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigATIHCAQQIRigATIHCAUQIRiPAtIBCDQ4MDJqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 rounded-md hover:bg-copper/10 transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram size={20} />
               </a>
             </div>
           </div>
@@ -103,7 +88,7 @@ export default function Footer() {
           className="mt-10 pt-6 border-t text-center text-xs"
           style={{ borderColor: "var(--card-border)", color: "var(--foreground)", opacity: 0.5 }}
         >
-          © {new Date().getFullYear()} Esen Kara Göktoğan. {t("All rights reserved.", "Tüm hakları saklıdır.")}
+          © {new Date().getFullYear()} Esen Kara Göktoğan. All rights reserved.
         </div>
       </div>
     </footer>

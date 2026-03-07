@@ -4,9 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon, Globe } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
-import { useLanguage } from "@/lib/language-context";
 import { navItems } from "@/lib/data";
 
 export default function Header() {
@@ -15,9 +14,8 @@ export default function Header() {
   const { theme, toggleTheme } = useTheme();
 
   if (pathname.startsWith("/studio")) return null;
-  const { lang, toggleLanguage } = useLanguage();
 
-  const items = navItems[lang];
+  const items = navItems.en;
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b" style={{ backgroundColor: "var(--nav-bg)", borderColor: "var(--card-border)" }}>
@@ -51,15 +49,6 @@ export default function Header() {
 
           {/* Controls */}
           <div className="flex items-center gap-2">
-            <button
-              onClick={toggleLanguage}
-              className="p-2 rounded-md hover:bg-copper/10 transition-colors text-sm font-medium flex items-center gap-1"
-              style={{ color: "var(--foreground)" }}
-              aria-label="Toggle language"
-            >
-              <Globe size={16} />
-              <span className="hidden sm:inline">{lang === "en" ? "TR" : "EN"}</span>
-            </button>
             <button
               onClick={toggleTheme}
               className="p-2 rounded-md hover:bg-copper/10 transition-colors"

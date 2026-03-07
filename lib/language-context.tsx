@@ -1,31 +1,19 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
-
-type Language = "en" | "tr";
+import { createContext, useContext, useCallback, type ReactNode } from "react";
 
 interface LanguageContextType {
-  lang: Language;
-  toggleLanguage: () => void;
-  t: (en: string, tr: string) => string;
+  lang: "en";
+  t: (en: string, tr?: string) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Language>("en");
-
-  const toggleLanguage = useCallback(() => {
-    setLang((prev) => (prev === "en" ? "tr" : "en"));
-  }, []);
-
-  const t = useCallback(
-    (en: string, tr: string) => (lang === "en" ? en : tr),
-    [lang]
-  );
+  const t = useCallback((en: string) => en, []);
 
   return (
-    <LanguageContext.Provider value={{ lang, toggleLanguage, t }}>
+    <LanguageContext.Provider value={{ lang: "en", t }}>
       {children}
     </LanguageContext.Provider>
   );

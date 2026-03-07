@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
-import { useSiteSettings, usePublications, useBlogPosts } from "@/lib/sanity/useSanityData";
+import { useSiteSettings, usePublications } from "@/lib/sanity/useSanityData";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -26,10 +26,8 @@ export default function Home() {
   const { lang, t } = useLanguage();
   const siteConfig = useSiteSettings();
   const publications = usePublications();
-  const blogPosts = useBlogPosts();
 
   const latestPublications = publications.slice(0, 3);
-  const latestBlogPosts = blogPosts.slice(0, 3);
 
   return (
     <div className="min-h-screen" style={{ background: "var(--background)" }}>
@@ -65,17 +63,6 @@ export default function Home() {
                 variants={stagger}
                 className="space-y-6"
               >
-                <motion.p
-                  custom={0}
-                  variants={fadeUp}
-                  className="font-sans text-sm font-medium uppercase tracking-[0.2em] text-copper"
-                >
-                  {t(
-                    siteConfig.university.department.en,
-                    siteConfig.university.department.tr
-                  )}
-                </motion.p>
-
                 <motion.h1
                   custom={1}
                   variants={fadeUp}
@@ -109,7 +96,7 @@ export default function Home() {
                   className="flex flex-wrap items-center gap-3 pt-2"
                 >
                   <a
-                    href={siteConfig.social.scholar}
+                    href="https://avesis.yasar.edu.tr/esen.kara"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 rounded-full border px-4 py-2 font-sans text-sm transition-colors duration-200 hover:bg-olive hover:text-cream"
@@ -118,24 +105,11 @@ export default function Home() {
                       color: "var(--foreground)",
                     }}
                   >
-                    Google Scholar
+                    AVESİS
                     <ExternalLink className="h-3.5 w-3.5" />
                   </a>
                   <a
-                    href={siteConfig.social.academia}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-full border px-4 py-2 font-sans text-sm transition-colors duration-200 hover:bg-olive hover:text-cream"
-                    style={{
-                      borderColor: "var(--card-border)",
-                      color: "var(--foreground)",
-                    }}
-                  >
-                    Academia
-                    <ExternalLink className="h-3.5 w-3.5" />
-                  </a>
-                  <a
-                    href={siteConfig.social.researchgate}
+                    href="https://www.researchgate.net/profile/Esen-Kara-2"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 rounded-full border px-4 py-2 font-sans text-sm transition-colors duration-200 hover:bg-olive hover:text-cream"
@@ -148,20 +122,7 @@ export default function Home() {
                     <ExternalLink className="h-3.5 w-3.5" />
                   </a>
                   <a
-                    href={siteConfig.social.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded-full border px-4 py-2 font-sans text-sm transition-colors duration-200 hover:bg-olive hover:text-cream"
-                    style={{
-                      borderColor: "var(--card-border)",
-                      color: "var(--foreground)",
-                    }}
-                  >
-                    X / Twitter
-                    <ExternalLink className="h-3.5 w-3.5" />
-                  </a>
-                  <a
-                    href={siteConfig.social.instagram}
+                    href="https://www.google.com/search?q=instagram+esenkara_&oq=instagram+esenkara_&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigATIHCAQQIRigATIHCAUQIRiPAtIBCDQ4MDJqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 rounded-full border px-4 py-2 font-sans text-sm transition-colors duration-200 hover:bg-olive hover:text-cream"
@@ -289,9 +250,9 @@ export default function Home() {
                     )}
                   </div>
                   <div className="flex shrink-0 items-center gap-2">
-                    {pub.doi && (
+                    {pub.url && (
                       <a
-                        href={`https://doi.org/${pub.doi}`}
+                        href={pub.url}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 rounded-full border px-3 py-1.5 font-sans text-xs font-medium transition-colors hover:bg-olive hover:text-cream"
@@ -300,7 +261,7 @@ export default function Home() {
                           color: "var(--foreground)",
                         }}
                       >
-                        DOI
+                        View
                         <ExternalLink className="h-3 w-3" />
                       </a>
                     )}
@@ -312,114 +273,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── Latest Blog Posts ─── */}
-      <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6 }}
-            className="mb-12 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end"
-          >
-            <div>
-              <h2
-                className="font-serif text-3xl font-bold sm:text-4xl"
-                style={{ color: "var(--foreground)" }}
-              >
-                {t("From the Blog", "Blogdan")}
-              </h2>
-              <p
-                className="mt-3 max-w-xl font-sans text-base"
-                style={{ color: "var(--foreground)", opacity: 0.6 }}
-              >
-                {t(
-                  "Reflections on literature, travel, and academic life.",
-                  "Edebiyat, seyahat ve akademik yaşam üzerine düşünceler."
-                )}
-              </p>
-            </div>
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-1.5 font-sans text-sm font-medium text-copper transition-colors hover:text-copper-light"
-            >
-              {t("All posts", "Tüm yazılar")}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </motion.div>
-
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {latestBlogPosts.map((post, i) => (
-              <motion.div
-                key={post.slug}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-              >
-                <Link
-                  href={`/blog/${post.slug}`}
-                  className="group block overflow-hidden rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                  style={{
-                    background: "var(--card-bg)",
-                    borderColor: "var(--card-border)",
-                  }}
-                >
-                  {/* Placeholder image */}
-                  <div className="relative aspect-[16/9] w-full overflow-hidden bg-olive/10">
-                    <div className="absolute inset-0 flex items-center justify-center bg-olive/5">
-                      <BookOpen
-                        className="h-10 w-10 text-olive/30 transition-transform duration-300 group-hover:scale-110"
-                      />
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                    <div className="absolute bottom-3 left-3">
-                      <span className="rounded-full bg-copper/90 px-2.5 py-1 font-sans text-xs font-medium text-cream">
-                        {post.category}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Card body */}
-                  <div className="p-5">
-                    <time
-                      className="mb-2 block font-sans text-xs"
-                      style={{ color: "var(--foreground)", opacity: 0.5 }}
-                      dateTime={post.date}
-                    >
-                      {new Date(post.date).toLocaleDateString(
-                        lang === "tr" ? "tr-TR" : "en-US",
-                        { year: "numeric", month: "long", day: "numeric" }
-                      )}
-                    </time>
-                    <h3
-                      className="mb-2 font-serif text-lg font-semibold leading-snug transition-colors duration-200 group-hover:text-copper"
-                      style={{ color: "var(--foreground)" }}
-                    >
-                      {post.title}
-                    </h3>
-                    <p
-                      className="line-clamp-2 font-sans text-sm leading-relaxed"
-                      style={{ color: "var(--foreground)", opacity: 0.6 }}
-                    >
-                      {post.excerpt}
-                    </p>
-                    {post.location && (
-                      <p className="mt-3 font-sans text-xs text-copper/70">
-                        {post.location}
-                      </p>
-                    )}
-                    <span className="mt-4 inline-flex items-center gap-1 font-sans text-sm font-medium text-copper">
-                      {t("Read more", "Devamını oku")}
-                      <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
-                    </span>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

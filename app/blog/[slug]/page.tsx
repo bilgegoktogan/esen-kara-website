@@ -80,7 +80,7 @@ export default function BlogPostPage() {
   }
 
   const formattedDate = new Date(post.date).toLocaleDateString(
-    lang === "tr" ? "tr-TR" : "en-US",
+    "en-US",
     { year: "numeric", month: "long", day: "numeric" }
   );
 
