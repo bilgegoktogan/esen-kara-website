@@ -35,10 +35,10 @@ export default function AboutPage() {
       current: true,
     },
     {
-      role: t("Courtesy Appointment", "Misafir Ogretim Uyesi"),
+      role: t("Visiting Scholar", "Ziyaretçi Araştırmacı"),
       institution: "Dartmouth College",
       location: t("Hanover, New Hampshire, USA", "Hanover, New Hampshire, ABD"),
-      period: "",
+      period: "2023 -- 2024",
       current: false,
     },
   ];
@@ -58,148 +58,12 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
           >
             <h1 className="font-serif text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl text-olive">
-              {t("About", "Hakkimda")}
+              {t("About", "Hakkımda")}
             </h1>
             <div
               className="mt-4 h-1 w-20 rounded-full"
               style={{ backgroundColor: "#B87333" }}
             />
-            <p className="mt-6 max-w-xl font-sans text-lg text-ink-light leading-relaxed">
-              {t(
-                "Scholar, teacher, and explorer of the intersections between literature, cities, and memory.",
-                "Edebiyat, kent ve bellek kesisimlerinin arastirmacisi, ogretmen ve kasifleri."
-              )}
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Bio Section */}
-      <section className="px-6 py-12 md:py-20">
-        <div className="mx-auto max-w-4xl">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={staggerContainer}
-          >
-            <motion.div variants={fadeInUp}>
-              <h2 className="font-serif text-3xl font-bold text-olive md:text-4xl">
-                {siteConfig.name}
-              </h2>
-              <p className="mt-2 text-sm font-medium uppercase tracking-widest text-copper">
-                {t(
-                  siteConfig.university.department.en,
-                  siteConfig.university.department.tr
-                )}
-              </p>
-
-              <div className="mt-8 space-y-5 text-base leading-relaxed">
-                {t(siteConfig.bio.en, siteConfig.bio.tr)
-                  .split("\n\n")
-                  .filter(Boolean)
-                  .map((paragraph, i) => (
-                    <p key={i} style={{ color: "var(--foreground)" }}>
-                      {paragraph}
-                    </p>
-                  ))}
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Education Timeline */}
-      <section className="px-6 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={fadeInUp}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="flex items-center gap-3 mb-12">
-              <GraduationCap className="h-7 w-7 text-copper" />
-              <h2 className="font-serif text-3xl font-bold text-olive md:text-4xl">
-                {t("Education", "Egitim")}
-              </h2>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={staggerContainer}
-            className="relative"
-          >
-            {/* Vertical timeline line */}
-            <div
-              className="absolute left-[15px] top-2 bottom-2 w-[2px] md:left-[19px]"
-              style={{ backgroundColor: "var(--card-border)" }}
-            />
-
-            <div className="space-y-10">
-              {education.map((edu, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative flex gap-6 pl-2 md:gap-8"
-                >
-                  {/* Timeline dot */}
-                  <div className="relative z-10 flex-shrink-0">
-                    <div
-                      className="h-8 w-8 rounded-full border-[3px] flex items-center justify-center md:h-10 md:w-10"
-                      style={{
-                        borderColor: "#B87333",
-                        backgroundColor: "var(--background)",
-                      }}
-                    >
-                      <div
-                        className="h-3 w-3 rounded-full md:h-3.5 md:w-3.5"
-                        style={{ backgroundColor: "#B87333" }}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Content card */}
-                  <div
-                    className="flex-1 rounded-xl p-6 transition-shadow duration-300 hover:shadow-lg md:p-8"
-                    style={{
-                      backgroundColor: "var(--card-bg)",
-                      border: "1px solid var(--card-border)",
-                    }}
-                  >
-                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                      <span
-                        className="inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white"
-                        style={{ backgroundColor: "#2D4A3E" }}
-                      >
-                        {lang === "en" ? edu.degree.en : edu.degree.tr}
-                      </span>
-                    </div>
-                    <h3
-                      className="mt-3 font-serif text-xl font-semibold md:text-2xl"
-                      style={{ color: "var(--foreground)" }}
-                    >
-                      {lang === "en" ? edu.field.en : edu.field.tr}
-                    </h3>
-                    <p className="mt-2 flex items-center gap-2 text-sm text-ink-lighter">
-                      <MapPin className="h-4 w-4 text-copper" />
-                      {lang === "en" ? edu.university.en : edu.university.tr}
-                    </p>
-                    {edu.thesis && (
-                      <p className="mt-4 text-sm italic leading-relaxed text-ink-light">
-                        {t("Thesis: ", "Tez: ")}
-                        {lang === "en" ? edu.thesis.en : edu.thesis.tr}
-                      </p>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </motion.div>
         </div>
       </section>
@@ -341,6 +205,101 @@ export default function AboutPage() {
                   </p>
                 </div>
               </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Education Timeline */}
+      <section className="px-6 py-16 md:py-24">
+        <div className="mx-auto max-w-4xl">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={fadeInUp}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="flex items-center gap-3 mb-12">
+              <GraduationCap className="h-7 w-7 text-copper" />
+              <h2 className="font-serif text-3xl font-bold text-olive md:text-4xl">
+                {t("Education", "Egitim")}
+              </h2>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={staggerContainer}
+            className="relative"
+          >
+            {/* Vertical timeline line */}
+            <div
+              className="absolute left-[15px] top-2 bottom-2 w-[2px] md:left-[19px]"
+              style={{ backgroundColor: "var(--card-border)" }}
+            />
+
+            <div className="space-y-10">
+              {education.map((edu, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="relative flex gap-6 pl-2 md:gap-8"
+                >
+                  {/* Timeline dot */}
+                  <div className="relative z-10 flex-shrink-0">
+                    <div
+                      className="h-8 w-8 rounded-full border-[3px] flex items-center justify-center md:h-10 md:w-10"
+                      style={{
+                        borderColor: "#B87333",
+                        backgroundColor: "var(--background)",
+                      }}
+                    >
+                      <div
+                        className="h-3 w-3 rounded-full md:h-3.5 md:w-3.5"
+                        style={{ backgroundColor: "#B87333" }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Content card */}
+                  <div
+                    className="flex-1 rounded-xl p-6 transition-shadow duration-300 hover:shadow-lg md:p-8"
+                    style={{
+                      backgroundColor: "var(--card-bg)",
+                      border: "1px solid var(--card-border)",
+                    }}
+                  >
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <span
+                        className="inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white"
+                        style={{ backgroundColor: "#2D4A3E" }}
+                      >
+                        {lang === "en" ? edu.degree.en : edu.degree.tr}
+                      </span>
+                    </div>
+                    <h3
+                      className="mt-3 font-serif text-xl font-semibold md:text-2xl"
+                      style={{ color: "var(--foreground)" }}
+                    >
+                      {lang === "en" ? edu.field.en : edu.field.tr}
+                    </h3>
+                    <p className="mt-2 flex items-center gap-2 text-sm text-ink-lighter">
+                      <MapPin className="h-4 w-4 text-copper" />
+                      {lang === "en" ? edu.university.en : edu.university.tr}
+                    </p>
+                    {edu.thesis && (
+                      <p className="mt-4 text-sm italic leading-relaxed text-ink-light">
+                        {t("Thesis: ", "Tez: ")}
+                        {lang === "en" ? edu.thesis.en : edu.thesis.tr}
+                      </p>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
