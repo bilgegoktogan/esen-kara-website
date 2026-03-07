@@ -246,34 +246,22 @@ export const publications: Publication[] = [
 
 export const courses: Course[] = [
   {
-    name: "Postcolonial Literature",
+    name: "Postcolonial Literature and Multiculturalism",
     level: "undergraduate",
     description:
-      "An exploration of literary texts from formerly colonized societies, examining themes of identity, resistance, and cultural hybridity.",
+      "An exploration of literary texts from postcolonial societies, examining themes of identity, cultural hybridity, and multicultural perspectives.",
   },
   {
-    name: "Comparative Literature",
+    name: "Turkish Literature in a Comparative Context",
     level: "undergraduate",
     description:
-      "A study of literary traditions across cultures and languages, with emphasis on intertextuality and cross-cultural dialogue.",
+      "A comparative study of Turkish literary traditions in dialogue with world literatures, exploring cross-cultural connections and transnational themes.",
   },
   {
-    name: "Classical Literature",
+    name: "Contemporary American Literature",
     level: "undergraduate",
     description:
-      "A survey of foundational literary works from ancient and classical traditions that continue to shape contemporary literature.",
-  },
-  {
-    name: "Advanced Topics in Postcolonial Theory",
-    level: "graduate",
-    description:
-      "An advanced seminar exploring contemporary debates in postcolonial theory, including posthumanism, eco-criticism, and transnational perspectives.",
-  },
-  {
-    name: "Memory and Literature",
-    level: "graduate",
-    description:
-      "A graduate seminar examining the relationship between collective memory, trauma, and literary representation.",
+      "A study of major works and movements in contemporary American literature, with attention to diversity, identity, and evolving narrative forms.",
   },
 ];
 

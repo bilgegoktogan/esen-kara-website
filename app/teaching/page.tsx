@@ -3,7 +3,7 @@
 import { useLanguage } from "@/lib/language-context";
 import { useCourses } from "@/lib/sanity/useSanityData";
 import { motion } from "framer-motion";
-import { GraduationCap, BookOpen, Users } from "lucide-react";
+import { GraduationCap, Users } from "lucide-react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -21,9 +21,6 @@ const staggerContainer = {
 export default function TeachingPage() {
   const { t } = useLanguage();
   const courses = useCourses();
-
-  const undergraduate = courses.filter((c) => c.level === "undergraduate");
-  const graduate = courses.filter((c) => c.level === "graduate");
 
   return (
     <div
@@ -48,53 +45,10 @@ export default function TeachingPage() {
             />
             <p className="mt-6 max-w-2xl font-sans text-lg text-ink-light leading-relaxed">
               {t(
-                "Connecting students with diverse literary traditions, fostering critical thinking, and encouraging cross-cultural dialogue.",
-                "Öğrencileri farklı edebi geleneklerle buluşturmak, eleştirel düşünceyi geliştirmek ve kültürlerarası diyaloğu teşvik etmek."
+                "I teach courses at both graduate and undergraduate levels in the areas of Postcolonial Literature and Multiculturalism, Turkish Literature in a Comparative Context, and Contemporary American Literature.",
+                "Lisans ve lisansüstü düzeylerde Postkolonyal Edebiyat ve Çokkültürlülük, Karşılaştırmalı Bağlamda Türk Edebiyatı ve Çağdaş Amerikan Edebiyatı alanlarında dersler vermekteyim."
               )}
             </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Teaching Philosophy */}
-      <section className="px-6 py-12 md:py-20">
-        <div className="mx-auto max-w-6xl">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            variants={fadeInUp}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex items-center gap-3 mb-8">
-              <BookOpen className="h-7 w-7 text-copper" />
-              <h2 className="font-serif text-3xl font-bold text-olive md:text-4xl">
-                {t("Teaching Philosophy", "Öğretim Felsefem")}
-              </h2>
-            </div>
-
-            <div
-              className="rounded-xl p-6 md:p-10"
-              style={{
-                backgroundColor: "var(--card-bg)",
-                border: "1px solid var(--card-border)",
-              }}
-            >
-              <div className="space-y-5 text-base leading-relaxed md:text-lg md:leading-relaxed">
-                <p style={{ color: "var(--foreground)" }}>
-                  {t(
-                    "I believe that literature is a powerful bridge between cultures, languages, and ways of seeing the world. My teaching approach centers on connecting students with diverse literary traditions -- from postcolonial fiction and comparative literature to ecocriticism and memory studies -- so that they can develop a richer, more nuanced understanding of the human experience across borders.",
-                    "Edebiyatın kültürler, diller ve dünyayı görme biçimleri arasında güçlü bir köprü olduğuna inanıyorum. Öğretim yaklaşımım, öğrencileri post-kolonyal kurgulardan karşılaştırmalı edebiyata, ekoeleştiriden bellek çalışmalarına uzanan farklı edebi geleneklerle buluşturarak, sınırları aşan insan deneyiminin daha zengin ve çok katmanlı bir kavrayışını geliştirmelerini sağlamaya odaklanıyor."
-                  )}
-                </p>
-                <p style={{ color: "var(--foreground)" }}>
-                  {t(
-                    "In the classroom, I foster critical thinking by encouraging students to question received narratives, engage deeply with texts, and discover unexpected connections between literary works from different eras and geographies. Through seminar discussions, close reading exercises, and collaborative projects, I aim to create a space where cross-cultural dialogue thrives -- where students learn not only to analyze literature, but to appreciate the transformative power of storytelling itself.",
-                    "Sınıfta, öğrencileri yerleşik anlatıları sorgulamaya, metinlerle derinlemesine etkileşime girmeye ve farklı dönem ve coğrafyalardan edebi eserler arasında beklenmedik bağlantılar keşfetmeye teşvik ederek eleştirel düşünceyi geliştiriyorum. Seminer tartışmaları, yakın okuma çalışmaları ve işbirlikli projeler aracılığıyla, kültürlerarası diyaloğun serpildiği bir ortam yaratmayı hedefliyorum -- öğrencilerin yalnızca edebiyatı analiz etmeyi değil, hikaye anlatımının dönüştürücü gücünü de takdir etmeyi öğrendiği bir alan."
-                  )}
-                </p>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>
@@ -117,126 +71,42 @@ export default function TeachingPage() {
             </div>
           </motion.div>
 
-          {/* Undergraduate Courses */}
-          <div className="mb-16">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={fadeInUp}
-              transition={{ duration: 0.5 }}
-            >
-              <h3 className="mb-8 font-serif text-2xl font-semibold text-olive md:text-3xl">
-                {t("Undergraduate", "Lisans")}
-              </h3>
-            </motion.div>
-
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={staggerContainer}
-              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-            >
-              {undergraduate.map((course, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  transition={{ duration: 0.5 }}
-                  className="group rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg md:p-8"
-                  style={{
-                    backgroundColor: "var(--card-bg)",
-                    border: "1px solid var(--card-border)",
-                  }}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={staggerContainer}
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          >
+            {courses.map((course, index) => (
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                transition={{ duration: 0.5 }}
+                className="group rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg md:p-8"
+                style={{
+                  backgroundColor: "var(--card-bg)",
+                  border: "1px solid var(--card-border)",
+                }}
+              >
+                <h4
+                  className="font-serif text-xl font-semibold leading-snug"
+                  style={{ color: "var(--foreground)" }}
                 >
-                  <span
-                    className="inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white"
-                    style={{ backgroundColor: "#2D4A3E" }}
-                  >
-                    {t("Undergraduate", "Lisans")}
-                  </span>
+                  {course.name}
+                </h4>
 
-                  <h4
-                    className="mt-4 font-serif text-xl font-semibold leading-snug"
-                    style={{ color: "var(--foreground)" }}
-                  >
-                    {course.name}
-                  </h4>
+                <div
+                  className="mt-3 h-0.5 w-10 rounded-full transition-all duration-300 group-hover:w-16"
+                  style={{ backgroundColor: "#B87333" }}
+                />
 
-                  <div
-                    className="mt-3 h-0.5 w-10 rounded-full transition-all duration-300 group-hover:w-16"
-                    style={{ backgroundColor: "#B87333" }}
-                  />
-
-                  <p className="mt-4 text-sm leading-relaxed text-ink-light">
-                    {course.description}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-
-          {/* Graduate Courses */}
-          <div>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={fadeInUp}
-              transition={{ duration: 0.5 }}
-            >
-              <h3 className="mb-8 font-serif text-2xl font-semibold text-olive md:text-3xl">
-                {t("Graduate", "Lisansüstü")}
-              </h3>
-            </motion.div>
-
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-              variants={staggerContainer}
-              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-            >
-              {graduate.map((course, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  transition={{ duration: 0.5 }}
-                  className="group rounded-xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg md:p-8"
-                  style={{
-                    backgroundColor: "var(--card-bg)",
-                    border: "1px solid var(--card-border)",
-                  }}
-                >
-                  <span
-                    className="inline-block rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider"
-                    style={{
-                      backgroundColor: "rgba(184, 115, 51, 0.15)",
-                      color: "#B87333",
-                    }}
-                  >
-                    {t("Graduate", "Lisansüstü")}
-                  </span>
-
-                  <h4
-                    className="mt-4 font-serif text-xl font-semibold leading-snug"
-                    style={{ color: "var(--foreground)" }}
-                  >
-                    {course.name}
-                  </h4>
-
-                  <div
-                    className="mt-3 h-0.5 w-10 rounded-full transition-all duration-300 group-hover:w-16"
-                    style={{ backgroundColor: "#B87333" }}
-                  />
-
-                  <p className="mt-4 text-sm leading-relaxed text-ink-light">
-                    {course.description}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+                <p className="mt-4 text-sm leading-relaxed text-ink-light">
+                  {course.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
