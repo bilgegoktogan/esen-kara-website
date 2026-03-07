@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/lib/language-context";
-import { usePublications, useSiteSettings } from "@/lib/sanity/useSanityData";
+import { usePublications } from "@/lib/sanity/useSanityData";
 import type { Publication } from "@/lib/data";
 import { motion } from "framer-motion";
 import { Filter, ExternalLink } from "lucide-react";
@@ -25,7 +25,6 @@ type TypeFilter = "all" | "article" | "chapter";
 export default function PublicationsPage() {
   const { t } = useLanguage();
   const publications = usePublications();
-  const siteConfig = useSiteSettings();
   const [typeFilter, setTypeFilter] = useState<TypeFilter>("all");
   const [fieldFilter, setFieldFilter] = useState<string>("all");
   // Gather unique fields from all publications
@@ -337,117 +336,43 @@ export default function PublicationsPage() {
               </p>
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
-                {/* Google Scholar */}
-                {siteConfig.social.scholar && (
-                  <a
-                    href={siteConfig.social.scholar}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/link flex items-center gap-3 rounded-xl p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                {/* AVESİS */}
+                <a
+                  href="https://avesis.yasar.edu.tr/esen.kara"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/link flex items-center gap-3 rounded-xl p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                  style={{
+                    backgroundColor: "var(--background)",
+                    border: "1px solid var(--card-border)",
+                  }}
+                >
+                  <div
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-sm font-bold"
                     style={{
-                      backgroundColor: "var(--background)",
-                      border: "1px solid var(--card-border)",
+                      backgroundColor: "rgba(184, 115, 51, 0.12)",
+                      color: "#B87333",
                     }}
                   >
-                    <div
-                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-sm font-bold"
-                      style={{
-                        backgroundColor: "rgba(184, 115, 51, 0.12)",
-                        color: "#B87333",
-                      }}
-                    >
-                      GS
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-sm font-semibold" style={{ color: "var(--foreground)" }}>
-                        Google Scholar
-                      </p>
-                      <p className="truncate text-xs text-ink-light">
-                        {t("Citations & metrics", "Atıflar ve metrikler")}
-                      </p>
-                    </div>
-                    <ExternalLink
-                      size={14}
-                      className="shrink-0 text-ink-lighter transition-colors duration-200 group-hover/link:text-copper"
-                    />
-                  </a>
-                )}
+                    AV
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-semibold" style={{ color: "var(--foreground)" }}>
+                      AVESİS
+                    </p>
+                    <p className="truncate text-xs text-ink-light">
+                      {t("Academic profile", "Akademik profil")}
+                    </p>
+                  </div>
+                  <ExternalLink
+                    size={14}
+                    className="shrink-0 text-ink-lighter transition-colors duration-200 group-hover/link:text-copper"
+                  />
+                </a>
 
                 {/* ResearchGate */}
-                {siteConfig.social.researchgate && (
-                  <a
-                    href={siteConfig.social.researchgate}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/link flex items-center gap-3 rounded-xl p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
-                    style={{
-                      backgroundColor: "var(--background)",
-                      border: "1px solid var(--card-border)",
-                    }}
-                  >
-                    <div
-                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-sm font-bold"
-                      style={{
-                        backgroundColor: "rgba(45, 74, 62, 0.1)",
-                        color: "#2D4A3E",
-                      }}
-                    >
-                      RG
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-sm font-semibold" style={{ color: "var(--foreground)" }}>
-                        ResearchGate
-                      </p>
-                      <p className="truncate text-xs text-ink-light">
-                        {t("Full-text publications", "Tam metin yayınlar")}
-                      </p>
-                    </div>
-                    <ExternalLink
-                      size={14}
-                      className="shrink-0 text-ink-lighter transition-colors duration-200 group-hover/link:text-copper"
-                    />
-                  </a>
-                )}
-
-                {/* Academia.edu */}
-                {siteConfig.social.academia && (
-                  <a
-                    href={siteConfig.social.academia}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group/link flex items-center gap-3 rounded-xl p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
-                    style={{
-                      backgroundColor: "var(--background)",
-                      border: "1px solid var(--card-border)",
-                    }}
-                  >
-                    <div
-                      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-sm font-bold"
-                      style={{
-                        backgroundColor: "rgba(184, 115, 51, 0.12)",
-                        color: "#B87333",
-                      }}
-                    >
-                      Ac
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className="text-sm font-semibold" style={{ color: "var(--foreground)" }}>
-                        Academia.edu
-                      </p>
-                      <p className="truncate text-xs text-ink-light">
-                        {t("Papers & research", "Makaleler ve araştırmalar")}
-                      </p>
-                    </div>
-                    <ExternalLink
-                      size={14}
-                      className="shrink-0 text-ink-lighter transition-colors duration-200 group-hover/link:text-copper"
-                    />
-                  </a>
-                )}
-
-                {/* ORCID */}
                 <a
-                  href="https://orcid.org/"
+                  href="https://www.researchgate.net/profile/Esen-Kara-2"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group/link flex items-center gap-3 rounded-xl p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
@@ -463,14 +388,48 @@ export default function PublicationsPage() {
                       color: "#2D4A3E",
                     }}
                   >
-                    ID
+                    RG
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-semibold" style={{ color: "var(--foreground)" }}>
-                      ORCID
+                      ResearchGate
                     </p>
                     <p className="truncate text-xs text-ink-light">
-                      {t("Researcher identifier", "Araştırmacı kimliği")}
+                      {t("Full-text publications", "Tam metin yayınlar")}
+                    </p>
+                  </div>
+                  <ExternalLink
+                    size={14}
+                    className="shrink-0 text-ink-lighter transition-colors duration-200 group-hover/link:text-copper"
+                  />
+                </a>
+
+                {/* Instagram */}
+                <a
+                  href="https://www.google.com/search?q=instagram+esenkara_&oq=instagram+esenkara_&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigATIHCAQQIRigATIHCAUQIRiPAtIBCDQ4MDJqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/link flex items-center gap-3 rounded-xl p-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                  style={{
+                    backgroundColor: "var(--background)",
+                    border: "1px solid var(--card-border)",
+                  }}
+                >
+                  <div
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-sm font-bold"
+                    style={{
+                      backgroundColor: "rgba(184, 115, 51, 0.12)",
+                      color: "#B87333",
+                    }}
+                  >
+                    IG
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-semibold" style={{ color: "var(--foreground)" }}>
+                      Instagram
+                    </p>
+                    <p className="truncate text-xs text-ink-light">
+                      @esenkara_
                     </p>
                   </div>
                   <ExternalLink
