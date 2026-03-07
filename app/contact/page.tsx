@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Send, ExternalLink, Instagram, GraduationCap, BookOpen, Globe } from "lucide-react";
+import { Mail, MapPin, Send, ExternalLink, Instagram, GraduationCap, Globe } from "lucide-react";
 import { useLanguage } from "@/lib/language-context";
 import { useSiteSettings } from "@/lib/sanity/useSanityData";
 
@@ -230,10 +230,9 @@ export default function ContactPage() {
                 <h3 className="font-serif font-semibold mb-4">{t("Find Me Online", "Çevrimiçi Bağlantılar")}</h3>
                 <div className="space-y-3">
                   {[
-                    { icon: Instagram, label: "Instagram", url: siteConfig.social.instagram },
-                    { icon: GraduationCap, label: "Google Scholar", url: siteConfig.social.scholar },
-                    { icon: BookOpen, label: "Academia.edu", url: siteConfig.social.academia },
-                    { icon: Globe, label: "ResearchGate", url: siteConfig.social.researchgate },
+                    { icon: GraduationCap, label: "AVESİS", url: "https://avesis.yasar.edu.tr/esen.kara" },
+                    { icon: Globe, label: "ResearchGate", url: "https://www.researchgate.net/profile/Esen-Kara-2" },
+                    { icon: Instagram, label: "Instagram", url: "https://www.google.com/search?q=instagram+esenkara_&oq=instagram+esenkara_&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigATIHCAQQIRigATIHCAUQIRiPAtIBCDQ4MDJqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8" },
                   ].map((link) => (
                     <a
                       key={link.label}
